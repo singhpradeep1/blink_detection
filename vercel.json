@@ -1,0 +1,27 @@
+{
+    "version" : 2,
+    "builds" : [
+        {
+            "src" : "blink_detection_project/wegi.py",
+            "use" :"@vercel/python",
+            "config" : {"maxLambdasize" :"15mb" , "runtime":"python3.9"}
+        },
+        {
+        "src" : "bild_files.sh",
+        "use" :"@vercel/static-build",
+        "config" : {
+            "disdir" : "staticfiles-build"
+        }   
+        }
+    ],
+    "routes" : [
+        {
+            "src":"/static/(.*)" ,
+            "dest" :"/static/$1"
+        },
+        {
+        "src":"/(.*)" ,
+        "dest" :"/blink_detection_project/wegi.py"   
+        }
+    ]
+}
